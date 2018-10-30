@@ -1,3 +1,5 @@
-.test {
-  color: red; 
+body {
+  padding: 40px 10%;
+  font-family: Arial;
+  line-height: 24px;
 }
