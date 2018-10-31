@@ -8,7 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/draw.js"></script>
   </head>
   <body>
@@ -23,8 +24,22 @@
     <section>
       <h2>Fitts' Law Experiment</h2>
       <div id="interaction">
-
+        <div id="target-1" onclick="targetClick()" class="target"></div>
+        <div id="target-2" onclick="targetClick()" class="target"></div>
       </div>
+      <div>
+        Experiment 1: Width: 10px; Distance: 160px;
+      </div>
+      <div>
+        Experiment 2: Width: 60px; Distance: 160px;
+      </div>
+      <div>
+        Experiment 3: Width: 150px; Distance: 160px;
+      </div>
+      <div>
+        Experiment 4: Width: 200px; Distance: 160px;
+      </div>
+      <!-- <button class="button" onclick="start()">Start Fitts' Law Experiment</button> -->
     </section>
     <!-- Visualization -->
     <section>
@@ -32,13 +47,13 @@
       <p>
         Did you have fun playing with the buttons? Now let's take a look at this visualization using an existing dataset.
       </p>
-      <img src="img/dataset.png" width="70%" alt="A screeshot of the dataset that is used for our visualization"/>
-      <p>
-        In a controlled experiment conducted by Ken Goldberg at UC Berkeley, the research team collected a total of 22,540 timing measurements. The dataset has been cleaned up, keeping only timing measurements for cases where the subject successfully clicks on all presented targets within a "reasonable" time period. Cases where subjects were distracted or decided not to complete the experiment were taken out from the dataset. After cleaning, the dataset contains 16,170 valid timing measurements.
-      </p>
       <div id="data-vis">
 
       </div>
+      <p>
+        In a controlled experiment conducted by Ken Goldberg at UC Berkeley, the research team collected a total of 22,540 timing measurements. The dataset has been cleaned up, keeping only timing measurements for cases where the subject successfully clicks on all presented targets within a "reasonable" time period. Cases where subjects were distracted or decided not to complete the experiment were taken out from the dataset. After cleaning, the dataset contains 16,170 valid timing measurements.
+      </p>
+      <img src="img/dataset.png" width="70%" alt="A screeshot of the dataset that is used for our visualization"/>
     </section>
     <!-- Exam -->
     <section>

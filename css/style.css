@@ -3,3 +3,40 @@ body {
   font-family: Arial;
   line-height: 24px;
 }
+
+li {
+  margin-bottom: 4px;
+}
+
+img {
+  margin-top: 10px;
+}
+
+.button {
+  font-family: Arial;
+  font-size: 14px;
+  margin: 16px 0px;
+  padding: 24px;
+}
+
+.target {
+  border: none;
+  height: 200px;
+  display: inline-block;
+  /* Subject to changes */
+  width: 10px;
+  background-color: red;
+}
+
+#target-1 {
+  /* Subject to changes */
+  width: 10px;
+  margin-right: 160px;
+  background-color: grey;
+}
+
+#target-2 {
+  /* Subject to changes */
+  width: 10px;
+  background-color: red;
+}

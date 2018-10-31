@@ -1,4 +1,4 @@
-Distance,Width,Index of Difficulty =LOG(2*A/W),Index of Difficulty =LOG(A/W+1),Ballistic Index,Power Index,A/W,Mean:,Std. Dev.:
+Distance,Width,IndexofDifficulty1,IndexofDifficulty2,Ballistic Index,Power Index,A/W,Mean,Std. Dev.:
 67,20,2.744161096,2.121015401,1.830300522,6.7,3.35,662.2125749,137.8955072
 184,38,3.275634443,2.546488353,2.200478417,9.684210526,4.842105263,637.9401198,125.4143499
 280,14,5.321928095,4.392317423,4.472135955,40,20,953.0928144,230.4930355
