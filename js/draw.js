@@ -1,5 +1,3 @@
-
-
 var testData = [
   { name: "Task 1", w: 10, d: 160 },
   { name: "Task 2", w: 60, d: 160 },
@@ -55,19 +53,17 @@ function loadData() {
       .enter()
       .append("circle")
       .transition()
-      .duration(2000)  // Length of animation
-      .each("start", function() {  // Start animation
-        d3.select(this)  // "this" means the current element
-          .attr("fill", "red")  // Change color
-          .attr("r", 5);  // Change size
+      .duration(2000)
+      .each("start", function() {
+        d3.select(this)
+          .attr("fill", "red")
+          .attr("r", 5);
       })
       .delay(function(d, i) {
-        return i / data.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
+        return i / data.length * 500;
       })
       .attr("cx",function (d) { return xScale(d.IndexofDifficulty1) })
       .attr("cy",function (d) { return yScale(d.Mean) })
-      .attr("r","5")
-      .attr("fill","red")
 
     svg.append("g")
         .attr("class", "x axis")
