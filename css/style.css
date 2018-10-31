@@ -27,16 +27,3 @@ img {
   width: 10px;
   background-color: red;
 }
-
-#target-1 {
-  /* Subject to changes */
-  width: 10px;
-  margin-right: 160px;
-  background-color: grey;
-}
-
-#target-2 {
-  /* Subject to changes */
-  width: 10px;
-  background-color: red;
-}
