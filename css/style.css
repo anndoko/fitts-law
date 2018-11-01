@@ -18,12 +18,3 @@ img {
   margin: 16px 0px;
   padding: 24px;
 }
-
-.target {
-  border: none;
-  height: 200px;
-  display: inline-block;
-  /* Subject to changes */
-  width: 10px;
-  background-color: red;
-}

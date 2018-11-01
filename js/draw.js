@@ -1,9 +1,11 @@
 var testData = [
-  { name: "Task 1", w: 10, d: 160 },
-  { name: "Task 2", w: 60, d: 160 },
-  { name: "Task 3", w: 150, d: 160 },
-  { name: "Task 4", w: 200, d: 160 }
+  { name: "Task 1", size: 10, distance: 160 },
+  { name: "Task 2", size: 60, distance: 160 },
+  { name: "Task 3", size: 150, distance: 160 },
+  { name: "Task 4", size: 200, distance: 160 }
 ];
+
+var testResults = [];
 
 $(document).ready(function () {
   loadTest();
@@ -12,29 +14,83 @@ $(document).ready(function () {
 
 // ---------- Fitts Interaction -----
 function loadTest() {
-  var body = d3. select("#interaction")
+  var body = d3.select("#interaction")
   var margin = { top: 50, right: 50, bottom: 50, left: 50 }
   var h = 300 - margin.top - margin.bottom
   var w = 800 - margin.left - margin.right
-  var d = 160;
-  //Make an SVG Container
+
+  var targetSetup = [
+    { name: "target1", status: true},
+    { name: "target2", status: false}
+  ];
+
   var svgContainer = body.append("svg")
     .attr("height", h + margin.top + margin.bottom)
     .attr("width", w + margin.left + margin.right)
 
-  //Draw the Rectangle
   var target1 = svgContainer.append("rect")
+    .attr("id", "target1")
     .attr("x", w/2)
     .attr("y", 50)
-    .attr("width", 10)
-    .attr("height", 200);
+    .attr("width", testData[0]["size"])
+    .attr("height", 200)
+    .attr("disabled", true)
+    .attr("fill", "grey")
 
   var target2 = svgContainer.append("rect")
-    .attr("x", w/2 + d)
+    .attr("id", "target2")
+    .attr("x", w/2 + testData[0]["distance"])
     .attr("y", 50)
-    .attr("width", 10)
-    .attr("height", 200);
+    .attr("width", testData[0]["size"])
+    .attr("height", 200)
+    .attr("disabled", false)
+    .attr("fill", "red")
+
+  curr_time = Date.now(); // Set the timer
+
+  // Target 1 events
+  target1.on("click", function(){
+
+    // Stop and reset the timer
+    if (d3.select("#target1").attr("disabled") == "false") {
+      next_time = Date.now();
+      move_time = next_time - curr_time;
+      console.log("Click 1:", move_time);
+      curr_time = Date.now();
+    }
+
+    // Switch button status and colors
+    target1
+      .attr("disabled", true)
+      .attr("fill", "grey")
+    target2
+      .attr("disabled", false)
+      .attr("fill", "red")
+
+  });
+
+  // Target 2 events
+  target2.on("click", function(){
+
+    // Stop and reset the timer
+    if (d3.select("#target2").attr("disabled") == "false") {
+      next_time = Date.now();
+      move_time = next_time - curr_time;
+      console.log("Click 2:", move_time);
+      curr_time = Date.now();
+    }
+
+    // Switch button status and colors
+    target2
+      .attr("disabled", true)
+      .attr("fill", "grey")
+    target1
+      .attr("disabled", false)
+      .attr("fill", "red")
+
+  });
 }
+
 
 // ---------- Fitts Visualization -----
 function loadData() {
