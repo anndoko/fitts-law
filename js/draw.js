@@ -162,11 +162,11 @@ function loadEmptyVis() {
     .attr("transform","translate(" + margin.left + "," + margin.top + ")")
 
   var xScale = d3.scale.linear()
-    .domain([1, 5])
-    .range([0,w])
+    .domain([0, 4])
+    .range([0, w])
 
   var yScale = d3.scale.linear()
-    .domain([1, 5])
+    .domain([0, 2000])
     .range([h, 0])
 
 	var xAxis = d3.svg.axis()
@@ -180,13 +180,26 @@ function loadEmptyVis() {
 	  .orient("left");
 
   svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + h + ")")
-      .call(xAxis)
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + h + ")")
+        .call(xAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("x", w)
+        .attr("y", -6)
+        .style("text-anchor", "end")
+        .text("Index of Difficulty = Log(2*A/W)");
 
   svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Movement Time");
 }
 
 function loadVis() {
