@@ -30,6 +30,10 @@ function drawExp(i, reverse){
   var height = 300 - margin.top - margin.bottom
   var width = 800 - margin.left - margin.right
 
+  var heading = body.append("h3")
+    .html("Experiment " + (i +1 ))
+    .attr("class", "exp-heading");
+
   var svgContainer = body.append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
@@ -130,7 +134,7 @@ function saveResult(curr_time, next_time, a, w){
   clicks++;
 
   // Update the experiment when reaching the required number of clicks
-  if (clicks == 10 && (i < (testData.length-1))){
+  if (clicks == 10 && (i < (testData.length - 1))){
     i++;
     $("#interaction").empty();
     drawExp(i, reverse);
