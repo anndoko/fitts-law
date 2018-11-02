@@ -1,7 +1,25 @@
+.title {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300;
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
 body {
-  padding: 40px 10%;
-  font-family: Arial;
-  line-height: 24px;
+  padding: 40px 20%;
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px;
+  line-height: 26px;
+}
+
+.heading {
+  text-align: center;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 40px;
+  margin-top: 48px;
 }
 
 li {
@@ -9,14 +27,31 @@ li {
 }
 
 img {
-  margin-top: 10px;
+  /* max-width: 300px;
+  max-height: 300px; */
+  width: 50%;
+  height: 50%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.warn {
+  background-color: #F1F1F1;
+  opacity: 0.9;
+  padding: 32px 10%;
 }
 
 .button {
   font-family: Arial;
   font-size: 14px;
-  margin: 16px 0px;
-  padding: 24px;
+  margin: 4px 0px;
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border: none;
 }
 
 .exp-heading {

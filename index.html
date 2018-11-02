@@ -11,18 +11,39 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/draw.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
   </head>
   <body>
+    <h1 class="text-center title">HCI Classroom</h1>
     <!-- Intro -->
     <section id="intro">
-      <h1>What Is Fitts' Law?</h1>
+      <h2 class="heading">What Is Fitts' Law?</h2>
       <p>
-        The idea of Fitts’ Law is that the distance to a target, a button for example, and its size determine the time required to move a pointing device. to the target -- “the closer and larger a target is, the faster it is to click on that target.”
+        Fitts's Law is one of the cornerstones of HCI research. In 1954, Fitts described the relationship between the target distance, width, and time needed for a target acquisition task. The distance to a target, a button for example, and its size determine the time required to move a pointing device to the target -- <b>“the closer and larger a target is, the faster it is to click on that target.”</b> This later became known as <b>"Fitts's law."</b>
       </p>
+      <img src="img/shannon.png" alt="Shannon formulation"/>
     </section>
     <!-- Interaction -->
     <section>
-      <h2>Fitts' Law Experiment</h2>
+      <h2 class="heading">Fitts' Law Experiment</h2>
+      <p>
+        The original investigation consisted of four experiments: two reciprocal tapping tasks, a disc transfer task, and a pin transfer task. In one of the original experiments -- reciprocal tapping task, participants were tasked to move a stylus back and forth between two plates as quickly as possible and tapped the plates at their centers. This arrangement is called <b>"the Fitts’ Paradigm."</b>
+      </p>
+      <img src="img/fitts-diagram.jpg" alt="A participants holding a stylus and conducting a task"/>
+      <p>
+        Below is a similar, web-based interactive tool for you to experiment.
+      </p>
+      <div class="warn">
+        <div class="text-center">⚠️</div>
+        <i>Using user-generated data points without a controlled and formal test setup is one limitation of this tool. Please note that this tool is designed only for educative and illustrative purpose. </i>
+      </div>
       <div id="interaction">
       </div>
       <button id="reverse" class="button">Reverse</button>
@@ -43,7 +64,7 @@
     </section>
     <!-- Visualization -->
     <section>
-      <h2>Fitts' Law Visualization</h2>
+      <h2 class="heading">Fitts' Law Visualization</h2>
       <p>
         Did you have fun playing with the buttons? Now let's take a look at this visualization using an existing dataset.
       </p>
@@ -53,11 +74,11 @@
       <p>
         In a controlled experiment conducted by Ken Goldberg at UC Berkeley, the research team collected a total of 22,540 timing measurements. The dataset has been cleaned up, keeping only timing measurements for cases where the subject successfully clicks on all presented targets within a "reasonable" time period. Cases where subjects were distracted or decided not to complete the experiment were taken out from the dataset. After cleaning, the dataset contains 16,170 valid timing measurements.
       </p>
-      <img src="img/dataset.png" width="70%" alt="A screeshot of the dataset that is used for our visualization"/>
+      <img src="img/dataset.png" alt="A screeshot of the dataset that is used for our visualization"/>
     </section>
     <!-- Exam -->
     <section>
-      <h2>Quick Quizz</h2>
+      <h2 class="heading">Quick Quizz</h2>
       <p>
         After the experiment, can you answer the following questions?
         <ol>
@@ -77,15 +98,15 @@
           <!-- Q3 -->
           <li>According to Fitt’s Law, which of the following UIs is more efficient?
             <ul>
-              <li><img src="img/b.png" width="200" height="100" alt="Three small buttons with icons on it"/></li>
-              <li><img src="img/a.png" width="200" height="100" alt="Three slightly larger buttons with both icons and labels on it"/></li>
+              <li><img src="img/b.png" alt="Three small buttons with icons on it"/></li>
+              <li><img src="img/a.png" alt="Three slightly larger buttons with both icons and labels on it"/></li>
             </ul>
           </li>
         </ol>
       </p>
     </section>
     <section id="reference">
-      <h2>Reference</h2>
+      <h2 class="heading">Reference</h2>
     </section>
   </body>
 </html>
