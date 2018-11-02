@@ -40,7 +40,7 @@ function drawExp(i, reverse){
   var a = testData[i]["distance"]
 
   var heading = body.append("h4")
-    .html("Test " + (i + 1) + " Info")
+    .html("Test " + (i + 1))
     .attr("class", "exp-heading");
 
   var info = body.append("div")
@@ -54,8 +54,8 @@ function drawExp(i, reverse){
   if(!reverse){
     var target1 = svgContainer.append("rect")
       .attr("id", "target1")
-      .attr("x", width/2 - 50)
-      .attr("y", height/2 - 50)
+      .attr("x", (width + margin.left + margin.right)/2 - w - a/2)
+      .attr("y", (height + margin.top + margin.bottom)/2 - 200/2)
       .attr("width", w)
       .attr("height", 200)
       .attr("disabled", true)
@@ -63,8 +63,8 @@ function drawExp(i, reverse){
 
     var target2 = svgContainer.append("rect")
       .attr("id", "target2")
-      .attr("x", width/2 - 50 + w + a)
-      .attr("y", height/2 - 50)
+      .attr("x", (width + margin.left + margin.right)/2 - w - a/2 + w + a)
+      .attr("y", (height + margin.top + margin.bottom)/2 - 200/2)
       .attr("width", w)
       .attr("height", 200)
       .attr("disabled", false)
@@ -73,8 +73,8 @@ function drawExp(i, reverse){
   } else {
     var target1 = svgContainer.append("rect")
       .attr("id", "target1")
-      .attr("x", 0)
-      .attr("y", 24)
+      .attr("x", (width + margin.left + margin.right)/2 - 250/2)
+      .attr("y", (height + margin.top + margin.bottom)/2 - a/2 - w)
       .attr("width", 250)
       .attr("height", w)
       .attr("disabled", true)
@@ -82,8 +82,8 @@ function drawExp(i, reverse){
 
     var target2 = svgContainer.append("rect")
       .attr("id", "target2")
-      .attr("x", 0)
-      .attr("y", 24 + w + a)
+      .attr("x", (width + margin.left + margin.right)/2 - 250/2)
+      .attr("y", (height + margin.top + margin.bottom)/2 - a/2 - w + w + a)
       .attr("width", 250)
       .attr("height", w)
       .attr("disabled", false)
