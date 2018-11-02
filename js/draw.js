@@ -11,14 +11,17 @@ var i = 0;
 
 $(document).ready(function () {
   loadTestData();
-  loadData();
+  loadExistingData();
 });
 
 // ---------- Fitts Interaction -----
 function loadTestData() {
+  // Load empty chart
+  loadEmptyVis();
+
   // Draw the current experiment
   drawExp(i, reverse);
-  loadEmptyVis();
+
   // Reverse button event
   d3.select("#reverse").on("click", function(){
     reverseButtons(i);
@@ -32,36 +35,40 @@ function drawExp(i, reverse){
   var height = 300 - margin.top - margin.bottom
   var width = d3.select("#interaction").style('width').slice(0, -2) - margin.left - margin.right
 
+  console.log(i);
+  var w = testData[i]["size"]
+  var a = testData[i]["distance"]
+
   var heading = body.append("h4")
-    .html("Test " + (i +1 ))
+    .html("Test " + (i + 1) + " Info")
     .attr("class", "exp-heading");
+
+  var info = body.append("div")
+    .html("Size (w): " + w  + "px | Distance (a): " + a + "px")
+    .attr("class", "exp-info");
 
   var svgContainer = body.append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
 
-  console.log(i);
-  var w = testData[i]["size"]
-  var a = testData[i]["distance"]
-
   if(!reverse){
     var target1 = svgContainer.append("rect")
       .attr("id", "target1")
-      .attr("x", 0)
-      .attr("y", height/2 - 250/2)
+      .attr("x", width/2 - 50)
+      .attr("y", height/2 - 50)
       .attr("width", w)
-      .attr("height", 250)
+      .attr("height", 200)
       .attr("disabled", true)
-      .attr("fill", "grey")
+      .attr("fill", "#D8D8D8")
 
     var target2 = svgContainer.append("rect")
       .attr("id", "target2")
-      .attr("x", w + a)
-      .attr("y", height/2 - 250/2)
+      .attr("x", width/2 - 50 + w + a)
+      .attr("y", height/2 - 50)
       .attr("width", w)
-      .attr("height", 250)
+      .attr("height", 200)
       .attr("disabled", false)
-      .attr("fill", "red")
+      .attr("fill", "#4A90E2")
 
   } else {
     var target1 = svgContainer.append("rect")
@@ -71,7 +78,7 @@ function drawExp(i, reverse){
       .attr("width", 250)
       .attr("height", w)
       .attr("disabled", true)
-      .attr("fill", "grey")
+      .attr("fill", "#D8D8D8")
 
     var target2 = svgContainer.append("rect")
       .attr("id", "target2")
@@ -80,7 +87,7 @@ function drawExp(i, reverse){
       .attr("width", 250)
       .attr("height", w)
       .attr("disabled", false)
-      .attr("fill", "red")
+      .attr("fill", "#4A90E2")
   }
 
   curr_time = Date.now(); // Set the timer
@@ -95,10 +102,10 @@ function drawExp(i, reverse){
     // Switch button status and colors
     target1
       .attr("disabled", true)
-      .attr("fill", "grey")
+      .attr("fill", "#D8D8D8")
     target2
       .attr("disabled", false)
-      .attr("fill", "red")
+      .attr("fill", "#4A90E2")
   });
 
   target2.on("click", function(){
@@ -111,10 +118,10 @@ function drawExp(i, reverse){
     // Switch button status and colors
     target2
       .attr("disabled", true)
-      .attr("fill", "grey")
+      .attr("fill", "#D8D8D8")
     target1
       .attr("disabled", false)
-      .attr("fill", "red")
+      .attr("fill", "#4A90E2")
   });
 }
 
@@ -146,59 +153,7 @@ function saveResult(i, curr_time, next_time, a, w){
   }
 }
 
-function loadEmptyVis() {
-  var body = d3.select("#result-vis")
-  var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  var h = 300 - margin.top - margin.bottom
-  var w = d3.select("#result-vis").style('width').slice(0, -2) - margin.left - margin.right
-
-  var svg = body.append("svg")
-    .attr("height", h + margin.top + margin.bottom)
-    .attr("width", w + margin.left + margin.right)
-    .append("g")
-    .attr("transform","translate(" + margin.left + "," + margin.top + ")")
-
-  var xScale = d3.scale.linear()
-    .domain([0, 4])
-    .range([0, w])
-
-  var yScale = d3.scale.linear()
-    .domain([0, 2000])
-    .range([h, 0])
-
-	var xAxis = d3.svg.axis()
-	  .scale(xScale)
-	  .ticks(5)
-	  .orient("bottom");
-
-	var yAxis = d3.svg.axis()
-	  .scale(yScale)
-	  .ticks(5)
-	  .orient("left");
-
-  svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + h + ")")
-        .call(xAxis)
-      .append("text")
-        .attr("class", "label")
-        .attr("x", w)
-        .attr("y", -6)
-        .style("text-anchor", "end")
-        .text("Index of Difficulty = Log(2*A/W)");
-
-  svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-      .append("text")
-        .attr("class", "label")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Movement Time");
-}
-
+// Visualiza testResults
 function loadVis() {
     $("#result-vis").empty();
     var body = d3.select("#result-vis")
@@ -291,8 +246,62 @@ function loadVis() {
         .text("Movement Time");
 }
 
+// Load empty scatter plot before the test starts
+function loadEmptyVis() {
+  var body = d3.select("#result-vis")
+  var margin = { top: 50, right: 50, bottom: 50, left: 50 }
+  var h = 300 - margin.top - margin.bottom
+  var w = d3.select("#result-vis").style('width').slice(0, -2) - margin.left - margin.right
+
+  var svg = body.append("svg")
+    .attr("height", h + margin.top + margin.bottom)
+    .attr("width", w + margin.left + margin.right)
+    .append("g")
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")")
+
+  var xScale = d3.scale.linear()
+    .domain([0, 4])
+    .range([0, w])
+
+  var yScale = d3.scale.linear()
+    .domain([0, 2000])
+    .range([h, 0])
+
+	var xAxis = d3.svg.axis()
+	  .scale(xScale)
+	  .ticks(5)
+	  .orient("bottom");
+
+	var yAxis = d3.svg.axis()
+	  .scale(yScale)
+	  .ticks(5)
+	  .orient("left");
+
+  svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + h + ")")
+        .call(xAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("x", w)
+        .attr("y", -6)
+        .style("text-anchor", "end")
+        .text("Index of Difficulty = Log(2*A/W)");
+
+  svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Movement Time");
+}
+
 // ---------- Fitts Visualization -----
-function loadData() {
+function loadExistingData() {
   d3.csv("data/experiments.csv", function(data){
 
     var body = d3.select("#data-vis")

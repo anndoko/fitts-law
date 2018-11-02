@@ -53,7 +53,6 @@ img {
 }
 
 .button {
-  text-align: center;
   font-family: Arial;
   font-size: 14px;
   margin-bottom: 24px;
@@ -87,9 +86,31 @@ img {
   margin: 16px 0px;
 }
 
-.exp-heading {
+.test-area {
+  text-align: center;
   margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 24px;
+  background-color: white;
+  border: 1px dotted #ccc !important;
+}
+
+.exp-heading {
+  text-align: center;
+  margin-top: 24px;
   font-size: 16px;
+  font-weight: bold !important;
+}
+
+.exp-info {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold !important;
+}
+
+rect {
+  rx: 3;
+  ry: 3;
 }
 
 li {
