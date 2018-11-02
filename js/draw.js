@@ -6,7 +6,8 @@ var testData = [
   { name: "Task 4", size: 200, distance: 160 }
 ];
 var testResults = [];
-
+var clicks = 0;
+var i = 0;
 $(document).ready(function () {
   loadTestData();
   loadData();
@@ -14,10 +15,8 @@ $(document).ready(function () {
 
 // ---------- Fitts Interaction -----
 function loadTestData() {
-  var i = 0;
-
-  drawTarget(i);
-
+  // Draw the current experiment
+  drawExp(i, reverse);
   // Reverse button event
   d3.select("#reverse").on("click", function(){
     reverseButtons(i);
@@ -25,7 +24,7 @@ function loadTestData() {
 }
 
 // Draw interactive buttons
-function drawTarget(i, reverse){
+function drawExp(i, reverse){
   var body = d3.select("#interaction")
   var margin = { top: 50, right: 50, bottom: 50, left: 50 }
   var height = 300 - margin.top - margin.bottom
@@ -35,6 +34,7 @@ function drawTarget(i, reverse){
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
 
+  console.log(i);
   var w = testData[i]["size"]
   var a = testData[i]["distance"]
 
@@ -116,15 +116,26 @@ function drawTarget(i, reverse){
 function reverseButtons(i){
   reverse = !reverse;
   $("#interaction").empty();
-  drawTarget(i, reverse);
+  drawExp(i, reverse);
 }
 
 // Save the user's click
 function saveResult(curr_time, next_time, a, w){
+  // Store data in an array and push it to the testResults array
   var data = []
   data.push(Math.log2(a/w + 1), next_time - curr_time);
   testResults.push(data);
-  console.log("Clicked & Saved: ", testResults);
+
+  // Count clicks
+  clicks++;
+
+  // Update the experiment when reaching the required number of clicks
+  if (clicks == 10 && (i < (testData.length-1))){
+    i++;
+    $("#interaction").empty();
+    drawExp(i, reverse);
+    clicks = 0;
+  }
 }
 
 // ---------- Fitts Visualization -----
