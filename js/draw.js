@@ -85,10 +85,6 @@ function drawExp(i, reverse){
 
   curr_time = Date.now(); // Set the timer
 
-
-
-
-
   target1.on("click", function(){
     // Stop and reset the timer
     if (d3.select("#target1").attr("disabled") == "false") {
@@ -124,6 +120,7 @@ function drawExp(i, reverse){
 
 // Reverse buttons
 function reverseButtons(i){
+  console.log("reverse:", i);
   reverse = !reverse;
   $("#interaction").empty();
   drawExp(i, reverse);
@@ -139,7 +136,7 @@ function saveResult(i, curr_time, next_time, a, w){
   loadVis();
   // Count clicks
   clicks++;
-
+  console.log(i);
   // Update the experiment when reaching the required number of clicks
   if (clicks == 10 && (i < (testData.length - 1))){
     i++;

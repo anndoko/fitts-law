@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
   </head>
   <body>
-    <h1 class="text-center title">HCI Classroom</h1>
+    <h1 class="text-center title">HCI 101: Fitts' Law</h1>
     <!-- Intro -->
     <section id="intro">
       <h2 class="heading">What Is Fitts' Law?</h2>
@@ -57,19 +57,19 @@
           </li>
           <li>Each test requires you to finish <b>10 clicks</b>. You will be presented with the next test as the requirement is made.</li>
           <li>It is worth noting that “the roles of width and height would reverse if the movement is vertical” Click the <b>"Reverse"</b> button to switch to a different layout.
-            <div class="ex-reverse"><button class="button">Reverse</button></div>
+            <div><button class="ex-reverse">Reverse</button></div>
           </li>
-          <li>A data point will be collected and shown on the scatter diagram as a dot every time you successfully click the target.</li>
+          <li>A data point will be collected and shown on the scatter diagram (see the <a href="#result-vis-title">"Test Data Visualization"</a> section) as a dot every time you successfully click the target.</li>
         </ul>
       </p>
       <div class="warn">
         <div class="text-center">⚠️</div>
-        <i>Using user-generated data points without a controlled and formal test setup is one limitation of this tool. Please note that this tool is designed only for educative and illustrative purpose. </i>
+        <i>Using user-generated data points without a controlled and formal test setup is one limitation of this tool. Please note that this tool is designed only for educative and illustrative purpose.</i>
       </div>
       <div id="interaction">
       </div>
       <button id="reverse" class="button">Reverse</button>
-      <div>
+      <!-- <div>
         Experiment 1: Width: 10px; Distance: 160px;
       </div>
       <div>
@@ -80,7 +80,11 @@
       </div>
       <div>
         Experiment 4: Width: 200px; Distance: 160px;
-      </div>
+      </div> -->
+      <h3 id="result-vis-title">Test Data Visualization</h3>
+      <p>
+        If you tried the interactive tool above, the data of all your clicks would go into the scatter plot here.
+      </p>
       <div id="result-vis">
       </div>
     </section>
@@ -102,12 +106,32 @@
       <div id="data-vis">
       </div>
       <p>
-        Again, the visualization demonstrates the key idea of Fitts' Law: It takes more time to click a target with higher index of difficulty (e.g., an object that is either far away and/or small). The pattern, as shown in the visualization, also fits typical Fitts' regression model.
+        Again, the visualization demonstrates the key idea of Fitts' Law: It takes more time to click a target with higher index of difficulty (e.g., an object that is either far away and/or small). The pattern, as shown in the visualization, also fits typical <b>Fitts' regression model</b>.
       </p>
       <img width="60%" src="img/regression.gif" alt="Fitts' regression line"/>
     </section>
     <section id="reference">
       <h2 class="heading">Reference</h2>
+        <ul class="citation">
+          <li>
+            Wallner, S., Danet, O., Eilersen, T., & Tved, J. (2012). An Interactive Visualisation of Fitts's Law with JavaScript and D3. University of Copenhagen. Retrieved from <a href="http://simonwallner.at/ext/fitts/" target="_blank">http://simonwallner.at/ext/fitts/</a>
+          </li>
+          <li>
+            GOKTÜRK, M. (n.d.). The Glossary of Human Computer Interaction. The Interaction Design Foundation. Retrieved from <a href="https://www.interaction-design.org/literature/book/the-glossary-of-human-computer-interaction/fitts-s-law" target="_blank">https://www.interaction-design.org/literature/book/the-glossary-of-human-computer-interaction/fitts-s-law</a>
+          </li>
+          <li>
+            Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. Journal of Experimental Psychology, 47(6), 381-391.  doi:10.1037/h0055392
+          </li>
+          <li>
+            MacKenzie, I. S., & Buxton, W. (1992). Extending Fitts's law to two-dimensional tasks. Proceedings of the SIGCHI conference on Human factors in computing systems CHI 92, p, 219-226. ACM Press. doi:10.1145/142750.142794
+          </li>
+        <ul>
+    </section>
+    <section id="source">
+      <h2 class="heading">Source Code</h2>
+      <p>
+        This project was created as as part of an individual assignment for the SI 649: Information Visualization class at the University of Michigan School of Information in November 2018. The source code is available on my <a href="https://github.com/anndoko/fitts-law" target="_blank">GitHub</a>. 
+      </p>
     </section>
   </body>
 </html>

@@ -53,9 +53,10 @@ img {
 }
 
 .button {
+  text-align: center;
   font-family: Arial;
   font-size: 14px;
-  margin: 4px 0px;
+  margin-bottom: 24px;
   padding: 8px 16px;
   background-color: black;
   color: white;
@@ -77,10 +78,21 @@ img {
 }
 
 .ex-reverse {
+  font-family: Arial;
+  font-size: 14px;
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border: none;
   margin: 16px 0px;
 }
 
 .exp-heading {
   margin-top: 40px;
   font-size: 16px;
+}
+
+li {
+  color: grey;
+  margin: 16px auto;
 }
