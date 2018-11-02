@@ -32,7 +32,7 @@ function drawExp(i, reverse){
   var height = 300 - margin.top - margin.bottom
   var width = d3.select("#interaction").style('width').slice(0, -2) - margin.left - margin.right
 
-  var heading = body.append("h3")
+  var heading = body.append("h4")
     .html("Test " + (i +1 ))
     .attr("class", "exp-heading");
 

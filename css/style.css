@@ -63,19 +63,22 @@ img {
 }
 
 .ex-clickable {
-  margin: 20px 0px;
+  margin: 16px 0px;
   width: 100px;
   height: 20px;
   background-color: red;
 }
 
 .ex-not-clickable {
-  margin: 20px 0px;
+  margin: 16px 0px;
   width: 100px;
   height: 20px;
   background-color: grey;
 }
 
+.ex-reverse {
+  margin: 16px 0px;
+}
 
 .exp-heading {
   margin-top: 40px;
