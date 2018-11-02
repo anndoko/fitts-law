@@ -235,7 +235,22 @@ function loadVis() {
       .duration(2000)
       .each("start", function() {
         d3.select(this)
-          .attr("fill", "red")
+          .attr("fill", function (d) {
+            switch(d[0]){
+              case 0:
+                return "red";
+                break;
+              case 1:
+                return "blue";
+                break;
+              case 2:
+                return "black";
+                break;
+              case 3:
+                return "yellow";
+                break;
+            }
+          })
           .attr("r", 5);
       })
       .delay(function(d, i) {
