@@ -30,8 +30,8 @@ function loadTestData() {
 function drawExp(i, reverse){
   var body = d3.select("#interaction")
   var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  var height = 600 - margin.top - margin.bottom
-  var width = 800 - margin.left - margin.right
+  var height = 300 - margin.top - margin.bottom
+  var width = d3.select("#interaction").style('width').slice(0, -2) - margin.left - margin.right
 
   var heading = body.append("h3")
     .html("Experiment " + (i +1 ))
@@ -153,8 +153,8 @@ function saveResult(i, curr_time, next_time, a, w){
 function loadEmptyVis() {
   var body = d3.select("#result-vis")
   var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  var h = 450 - margin.top - margin.bottom
-  var w = 800 - margin.left - margin.right
+  var h = 300 - margin.top - margin.bottom
+  var w = d3.select("#result-vis").style('width').slice(0, -2) - margin.left - margin.right
 
   var svg = body.append("svg")
     .attr("height", h + margin.top + margin.bottom)
@@ -194,8 +194,8 @@ function loadVis() {
     $("#result-vis").empty();
     var body = d3.select("#result-vis")
     var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  	var h = 450 - margin.top - margin.bottom
-  	var w = 800 - margin.left - margin.right
+  	var h = 300 - margin.top - margin.bottom
+  	var w = d3.select("#result-vis").style('width').slice(0, -2) - margin.left - margin.right
 
     var xScale = d3.scale.linear()
       .domain([
@@ -238,16 +238,16 @@ function loadVis() {
           .attr("fill", function (d) {
             switch(d[0]){
               case 0:
-                return "red";
+                return "#EC4989";
                 break;
               case 1:
-                return "blue";
+                return "#4FE8C5";
                 break;
               case 2:
-                return "black";
+                return "#4A90E2";
                 break;
               case 3:
-                return "yellow";
+                return "#F5A623";
                 break;
             }
           })
@@ -288,8 +288,8 @@ function loadData() {
 
     var body = d3.select("#data-vis")
     var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  	var h = 450 - margin.top - margin.bottom
-  	var w = 800 - margin.left - margin.right
+  	var h = 300 - margin.top - margin.bottom
+  	var w = d3.select("#data-vis").style('width').slice(0, -2) - margin.left - margin.right
 
     var xScale = d3.scale.linear()
       .domain([
@@ -329,8 +329,8 @@ function loadData() {
       .duration(2000)
       .each("start", function() {
         d3.select(this)
-          .attr("fill", "red")
-          .attr("r", 5);
+          .attr("fill", "#4A90E2")
+          .attr("r", 4);
       })
       .delay(function(d, i) {
         return i / data.length * 500;
