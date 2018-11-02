@@ -11,7 +11,6 @@ var i = 0;
 
 $(document).ready(function () {
   loadTestData();
-
   loadData();
 });
 
@@ -34,7 +33,7 @@ function drawExp(i, reverse){
   var width = d3.select("#interaction").style('width').slice(0, -2) - margin.left - margin.right
 
   var heading = body.append("h3")
-    .html("Experiment " + (i +1 ))
+    .html("Test " + (i +1 ))
     .attr("class", "exp-heading");
 
   var svgContainer = body.append("svg")
@@ -279,7 +278,7 @@ function loadVis() {
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Mean Movement Time");
+        .text("Movement Time");
 }
 
 // ---------- Fitts Visualization -----
@@ -296,7 +295,7 @@ function loadData() {
       	d3.min([0, d3.min(data, function (d) { return d.IndexofDifficulty2 })]),
       	d3.max([0, d3.max(data, function (d) { return d.IndexofDifficulty2 })])
       	])
-      .range([0,w])
+      .range([0, w])
 
     var yScale = d3.scale.linear()
       .domain([
@@ -358,6 +357,6 @@ function loadData() {
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Mean Movement Time");
+        .text("Movement Time");
   });
 }

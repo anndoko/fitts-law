@@ -46,9 +46,10 @@ img {
 }
 
 .warn {
+  margin-top: 40px;
   background-color: #F1F1F1;
   opacity: 0.9;
-  padding: 32px 10%;
+  padding: 24px 10%;
 }
 
 .button {
@@ -60,6 +61,21 @@ img {
   color: white;
   border: none;
 }
+
+.ex-clickable {
+  margin: 20px 0px;
+  width: 100px;
+  height: 20px;
+  background-color: red;
+}
+
+.ex-not-clickable {
+  margin: 20px 0px;
+  width: 100px;
+  height: 20px;
+  background-color: grey;
+}
+
 
 .exp-heading {
   margin-top: 40px;

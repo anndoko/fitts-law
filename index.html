@@ -37,8 +37,27 @@
         The original investigation consisted of four experiments: two reciprocal tapping tasks, a disc transfer task, and a pin transfer task. In one of the original experiments -- reciprocal tapping task, participants were tasked to move a stylus back and forth between two plates as quickly as possible and tapped the plates at their centers. This arrangement is called <b>"the Fitts’ Paradigm."</b>
       </p>
       <img width="40%" src="img/fitts-diagram.jpg" alt="A participants holding a stylus and conducting a task"/>
+      <h3>Interactive Fitts' Law Test</h3>
       <p>
-        Below is a similar, web-based interactive tool for you to experiment.
+        Below is a similar, web-based interactive tool for you to experiment. The tool, along with the visualization, aims to support your learning of Fitts' Law.
+      </p>
+      <p>
+        <ul>
+          <li>The <b>sizes</b> of targets and the <b>distance</b> between them vary in each test.</li>
+          <li>
+            <b>Move your cursor back and forth from non-clickable target to clickable target.</b>
+            <ul>
+              <li>Clickable object looks like this:
+                <div class="ex-clickable"></div>
+              </li>
+              <li>Not-clickable object looks like this:
+                <div class="ex-not-clickable"></div>
+              </li>
+            </ul>
+          </li>
+          <li>Each test requires you to finish <b>10 clicks</b>. You will be presented with the next test as the requirement is made.</li>
+          <li>A data point will be collected and shown on the scatter diagram as a dot every time you successfully click the target.</li>
+        </ul>
       </p>
       <div class="warn">
         <div class="text-center">⚠️</div>
@@ -66,17 +85,23 @@
     <section>
       <h2 class="heading">Fitts' Law Visualization</h2>
       <p>
-        Did you have fun playing with the experiment? Now let's take a look at this visualization using an existing dataset!
+        Did you have fun playing with the experiment? (It is okay if you do not want to try it!) Let's take a look at this visualization using an existing dataset!
       </p>
-      <h3>About the Dataset</h3>
+      <h3>Dataset</h3>
       <p>
         In a controlled experiment conducted by Ken Goldberg at UC Berkeley, the research team collected a total of 22,540 timing measurements. <a href="http://automation.berkeley.edu/fitts-dataset/" target="_blank">The dataset</a> has been cleaned up, keeping only timing measurements for cases where the subject successfully clicks on all presented targets within a "reasonable" time period. Cases where subjects were distracted or decided not to complete the experiment were taken out from the dataset. After cleaning, the dataset contains 16,170 valid timing measurements.
       </p>
       <img width="90%" src="img/dataset.png" alt="A screeshot of the dataset that is used for our visualization"/>
-
+      <h3>Data Visualization</h3>
+      <p>
+        This scatter plot is created using the dataset mentioned above. Each circle represent a data point, which is mapped according to the <b>"Index of Difficulty"</b> and <b>"Movement time."</b> Can you spot the pattern here?
+      </p>
       <div id="data-vis">
-
       </div>
+      <p>
+        Again, the visualization demonstrates the key idea of Fitts' Law: It takes more time to click a target with higher index of difficulty (e.g., an object that is either far away and/or small). The pattern, as shown in the visualization, also fits typical Fitts' regression model.
+      </p>
+      <img width="60%" src="img/regression.gif" alt="Fitts' regression line"/>
     </section>
     <section id="reference">
       <h2 class="heading">Reference</h2>
