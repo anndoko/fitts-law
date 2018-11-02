@@ -7,7 +7,7 @@ var testData = [
 ];
 var testResults = [];
 var clicks = 0;
-var i = 0;
+var i = 2;
 $(document).ready(function () {
   loadTestData();
   loadData();
@@ -27,7 +27,7 @@ function loadTestData() {
 function drawExp(i, reverse){
   var body = d3.select("#interaction")
   var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  var height = 300 - margin.top - margin.bottom
+  var height = 600 - margin.top - margin.bottom
   var width = 800 - margin.left - margin.right
 
   var heading = body.append("h3")
@@ -46,7 +46,7 @@ function drawExp(i, reverse){
     var target1 = svgContainer.append("rect")
       .attr("id", "target1")
       .attr("x", 0)
-      .attr("y", 24)
+      .attr("y", height/2 - 250/2)
       .attr("width", w)
       .attr("height", 250)
       .attr("disabled", true)
@@ -55,7 +55,7 @@ function drawExp(i, reverse){
     var target2 = svgContainer.append("rect")
       .attr("id", "target2")
       .attr("x", w + a)
-      .attr("y", 24)
+      .attr("y", height/2 - 250/2)
       .attr("width", w)
       .attr("height", 250)
       .attr("disabled", false)
@@ -87,7 +87,7 @@ function drawExp(i, reverse){
     // Stop and reset the timer
     if (d3.select("#target1").attr("disabled") == "false") {
       next_time = Date.now();
-      saveResult(curr_time, next_time, a, w);
+      saveResult(i, curr_time, next_time, a, w);
       curr_time = Date.now();
     }
     // Switch button status and colors
@@ -103,7 +103,7 @@ function drawExp(i, reverse){
     // Stop and reset the timer
     if (d3.select("#target2").attr("disabled") == "false") {
       next_time = Date.now();
-      saveResult(curr_time, next_time, a, w);
+      saveResult(i, curr_time, next_time, a, w);
       curr_time = Date.now();
     }
     // Switch button status and colors
@@ -124,11 +124,12 @@ function reverseButtons(i){
 }
 
 // Save the user's click
-function saveResult(curr_time, next_time, a, w){
+function saveResult(i, curr_time, next_time, a, w){
   // Store data in an array and push it to the testResults array
   var data = []
-  data.push(Math.log2(a/w + 1), next_time - curr_time);
+  data.push(i, Math.log2(a/w + 1), next_time - curr_time);
   testResults.push(data);
+  console.log(testResults);
 
   // Count clicks
   clicks++;
