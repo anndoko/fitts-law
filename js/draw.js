@@ -1,15 +1,27 @@
 var reverse = false;
-var testData = [
-  { name: "Task 1", size: 10, distance: 160 },
-  { name: "Task 2", size: 60, distance: 160 },
-  { name: "Task 3", size: 150, distance: 160 },
-  { name: "Task 4", size: 200, distance: 160 }
-];
+
+var testData = [];
+  // { name: "Task 1", size: 10, distance: 160 },
+  // { name: "Task 2", size: 60, distance: 160 },
+  // { name: "Task 3", size: 150, distance: 160 },
+  // { name: "Task 4", size: 200, distance: 160 }
+
+var numTest = 10;
+var wRange = 200;
+var aRange = 200;
+for (var num = 0; num < numTest; num++){
+  var test = {}
+  test["size"] = Math.floor(Math.random() * wRange);
+  test["distance"] = Math.floor(Math.random() * wRange);
+  testData.push(test);
+}
+
 var testResults = [];
 var clicks = 0;
 var i = 0;
 
 $(document).ready(function () {
+  console.log(testData);
   loadTestData();
   loadExistingData();
 });
@@ -31,8 +43,8 @@ function loadTestData() {
 // Draw interactive buttons
 function drawExp(i, reverse){
   var body = d3.select("#interaction")
-  var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-  var height = 300 - margin.top - margin.bottom
+  var margin = { top: 25, right: 25, bottom: 25, left: 25 }
+  var height = 450 - margin.top - margin.bottom
   var width = d3.select("#interaction").style('width').slice(0, -2) - margin.left - margin.right
 
   console.log(i);
@@ -114,7 +126,7 @@ function drawExp(i, reverse){
     // Stop and reset the timer
     if (d3.select("#target2").attr("disabled") == "false") {
       next_time = Date.now();
-      saveResult(i, curr_time, next_time, a, w);
+      saveResult(curr_time, next_time, a, w);
       curr_time = Date.now();
     }
     // Switch button status and colors
@@ -143,6 +155,8 @@ function saveResult(curr_time, next_time, a, w){
   data.push(testID, Math.log2(a/w + 1), next_time - curr_time);
   testResults.push(data);
 
+  console.log(testResults);
+
   loadVis();
 
   // Count clicks
@@ -159,6 +173,7 @@ function saveResult(curr_time, next_time, a, w){
 
 // Visualiza testResults
 function loadVis() {
+    console.log(testResults);
     $("#result-vis").empty();
     var body = d3.select("#result-vis")
     var margin = { top: 50, right: 50, bottom: 50, left: 50 }
@@ -195,6 +210,19 @@ function loadVis() {
   	  .ticks(5)
   	  .orient("left");
 
+    var colors = [
+      "#08AFD8",
+      "#0036AD",
+      "#28FFE2",
+      "#90FF00",
+      "#FF1654",
+      "#32936F",
+      "#FFBF00",
+      "#FE3A56",
+      "#FF7F00",
+      "#2296A5"
+    ];
+
     var circles = svg.selectAll("circle")
       .data(testResults)
       .enter()
@@ -204,20 +232,8 @@ function loadVis() {
       .each("start", function() {
         d3.select(this)
           .attr("fill", function (d) {
-            switch(d[0]){
-              case 0:
-                return "#EC4989";
-                break;
-              case 1:
-                return "#4FE8C5";
-                break;
-              case 2:
-                return "#4A90E2";
-                break;
-              case 3:
-                return "#F5A623";
-                break;
-            }
+            var index = d[0]
+            return colors[index];
           })
           .attr("r", 5);
       })
