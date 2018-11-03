@@ -1,11 +1,7 @@
 var reverse = false;
 
+// Create testData using andomize size/distance
 var testData = [];
-  // { name: "Task 1", size: 10, distance: 160 },
-  // { name: "Task 2", size: 60, distance: 160 },
-  // { name: "Task 3", size: 150, distance: 160 },
-  // { name: "Task 4", size: 200, distance: 160 }
-
 var numTest = 10;
 var wRange = 200;
 var aRange = 200;
@@ -21,7 +17,6 @@ var clicks = 0;
 var i = 0;
 
 $(document).ready(function () {
-  console.log(testData);
   loadTestData();
   loadExistingData();
 });
@@ -42,15 +37,15 @@ function loadTestData() {
 
 // Draw interactive buttons
 function drawExp(i, reverse){
+  // Basic setup
   var body = d3.select("#interaction")
   var margin = { top: 25, right: 25, bottom: 25, left: 25 }
   var height = 450 - margin.top - margin.bottom
   var width = d3.select("#interaction").style('width').slice(0, -2) - margin.left - margin.right
 
-  console.log(i);
+  // Test data
   var w = testData[i]["size"]
   var a = testData[i]["distance"]
-
   var testNum = Math.floor(testResults.length/10)
 
   var heading = body.append("h4")
@@ -141,7 +136,6 @@ function drawExp(i, reverse){
 
 // Reverse buttons
 function reverseButtons(i){
-  console.log("reverse:", i);
   reverse = !reverse;
   $("#interaction").empty();
   drawExp(i, reverse);
@@ -155,8 +149,7 @@ function saveResult(curr_time, next_time, a, w){
   data.push(testID, Math.log2(a/w + 1), next_time - curr_time);
   testResults.push(data);
 
-  console.log(testResults);
-
+  // Update the test data visualization
   loadVis();
 
   // Count clicks
@@ -173,7 +166,6 @@ function saveResult(curr_time, next_time, a, w){
 
 // Visualiza testResults
 function loadVis() {
-    console.log(testResults);
     $("#result-vis").empty();
     var body = d3.select("#result-vis")
     var margin = { top: 50, right: 50, bottom: 50, left: 50 }
