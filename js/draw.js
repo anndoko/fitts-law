@@ -39,8 +39,10 @@ function drawExp(i, reverse){
   var w = testData[i]["size"]
   var a = testData[i]["distance"]
 
+  var testNum = Math.floor(testResults.length/10)
+
   var heading = body.append("h4")
-    .html("Test " + (i + 1))
+    .html("Test " + (testNum + 1))
     .attr("class", "exp-heading");
 
   var info = body.append("div")
@@ -96,7 +98,7 @@ function drawExp(i, reverse){
     // Stop and reset the timer
     if (d3.select("#target1").attr("disabled") == "false") {
       next_time = Date.now();
-      saveResult(i, curr_time, next_time, a, w);
+      saveResult(curr_time, next_time, a, w);
       curr_time = Date.now();
     }
     // Switch button status and colors
@@ -134,16 +136,18 @@ function reverseButtons(i){
 }
 
 // Save the user's click
-function saveResult(i, curr_time, next_time, a, w){
+function saveResult(curr_time, next_time, a, w){
   // Store data in an array and push it to the testResults array
   var data = []
-  data.push(i, Math.log2(a/w + 1), next_time - curr_time);
+  var testID = Math.floor(testResults.length/10)
+  data.push(testID, Math.log2(a/w + 1), next_time - curr_time);
   testResults.push(data);
-  console.log(testResults);
+
   loadVis();
+
   // Count clicks
   clicks++;
-  console.log(i);
+
   // Update the experiment when reaching the required number of clicks
   if (clicks == 10 && (i < (testData.length - 1))){
     i++;
